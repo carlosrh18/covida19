@@ -105,7 +105,7 @@
 {% endif %}
 
 
-{% if user.is_authenticated %}
+
 <br>
 <h2 id="casos"  style="text-align:center;">Casos confirmados en Colima: 2</h2>
 <h2 id="casos" style="text-align:center;">Casos Sospechosos en Colima: 5</h2>
@@ -406,7 +406,5 @@ map.addLayer({
         <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
         <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Ultimo</a>
       {% endif %}
-
-    {% endif %}
     {% endif %}
 {% endblock content %}
