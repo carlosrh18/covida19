@@ -21,6 +21,8 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+		
+		
 
 	def extension(self):
 		name, extension = os.path.splitext(self.file.name)
