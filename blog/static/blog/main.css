@@ -1,11 +1,11 @@
 body {
-  background: #ffffff;
-  color: #333333;
+  background: #333333;
+  color:  white;
   margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: white;
 }
 
 ul {
@@ -37,7 +37,7 @@ ul {
 
 }
 .content-section {
-  background: #ffffff;
+  background: black;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -91,7 +91,14 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
+.leyenda {
+  color: white;
+}
 
+.casos{
+  color: white;
+
+}
 
 #info {
 	position: absolute;

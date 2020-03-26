@@ -108,20 +108,22 @@
 
 <br>
 <h2 id="casos"  style="text-align:center;">Casos confirmados en Colima: 2</h2>
-<h2 id="casos" style="text-align:center;">Casos Sospechosos en Colima: 4 (Manzanillo, Armería,Tecomán y Colima)</h2>
+<h2 id="casos" style="text-align:center;">Casos Sospechosos en Colima: 7</h2>
 <br>
-<h4>Actualizado al 22/03/20 a las 10:25 p.m</h4>
-<h6>Información de Secretaría de Salud Colima</h6>
+<h6 id="leyenda">Amarillo: Casos sospechosos, Rojo: Casos confirmados</h6>
+<br>
+<h4 id="leyenda">Actualizado al 25/03/20 a las 11:17 p.m</h4>
+<h6 id="leyenda">Información de Secretaría de Salud Colima</h6>
 <div id='map' style='width: 1120px; height: 600px;'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3JvYmxlczE4OTYiLCJhIjoiY2s3eWF0b3I4MDRyMTNvcXIxOGc5ZWl3cyJ9.CRvm3fO7Cb3ZOXdUU_zOqg';
 var map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/streets-v10',
+style: 'mapbox://styles/mapbox/navigation-preview-night-v4',
      center: [-104, 19.166667],
      zoom: 9
 });
-/*
+
 map.on('load', function() {
 // Add a new source from our GeoJSON data and
 // set the 'cluster' option to true. GL-JS will
@@ -134,14 +136,23 @@ data: {
     "type": "FeatureCollection",
     "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
     "features": [
-    { "type": "Feature", "properties": { "id": "ak16994521", "mag": 2.3, "time": 1507425650893, "felt": null, "tsunami": 0 }, "geometry": { "type": "Point", "coordinates": [ -104.316132, 19.053280, 0.0 ] } }
+    { "type": "Feature", "properties": { "id": "ak16994521", "mag": "Manzanillo", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -104.316132, 19.053280, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Manzanillo", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -104.316132, 19.095280, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Armería", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -103.9813531, 19.009247, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Colima", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -103.728058, 19.24678, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Colima", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -103.740302, 19.233569, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Colima", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -103.707068, 19.231091, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Comala", "time": 1507425650893, "felt": null, "status": 0 }, "geometry": { "type": "Point", "coordinates": [ -103.759299, 19.325808, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Cuauhtémoc", "time": 1507425650893, "felt": null, "status": 1 }, "geometry": { "type": "Point", "coordinates": [ -103.581849, 19.338543, 0.0 ] } },
+	{ "type": "Feature", "properties": { "id": "ak16994521", "mag": "Colima", "time": 1507425650893, "felt": null, "status": 1 }, "geometry": { "type": "Point", "coordinates": [ -103.69804, 19.235232, 0.0 ] } }
     ]
 },
 cluster: true,
-clusterMaxZoom: 14, // Max zoom to cluster points on
+clusterMaxZoom: 5, // Max zoom to cluster points on
 clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
 });
- 
+
+
 map.addLayer({
 id: 'clusters',
 type: 'circle',
@@ -166,8 +177,8 @@ paint: {
 'step',
 ['get', 'point_count'],
 20,
+40,
 100,
-30,
 750,
 40
 ]
@@ -182,18 +193,33 @@ filter: ['has', 'point_count'],
 layout: {
 'text-field': '{point_count_abbreviated}',
 'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-'text-size': 12
+'text-size': 44
 }
 });
- 
+
+var color;
+/*
+if (data.features[0].properties.status === 1) {
+color = '#F7943E'
+} else {
+color = '#E0084B'
+}
+*/
 map.addLayer({
+
 id: 'unclustered-point',
 type: 'circle',
 source: 'earthquakes',
 filter: ['!', ['has', 'point_count']],
 paint: {
-'circle-color': '#11b4da',
-'circle-radius': 4,
+'circle-color': {
+              property: 'status', // this will be your density property form you geojson
+              stops: [
+                [0, '#F7943E'],
+                [1, '#E0084B'],
+              ]
+            },
+'circle-radius': 25,
 'circle-stroke-width': 1,
 'circle-stroke-color': '#fff'
 }
@@ -225,14 +251,21 @@ zoom: zoom
 map.on('click', 'unclustered-point', function(e) {
  
 var coordinates = e.features[0].geometry.coordinates.slice();
+console.log(e.features[0]);
 var mag = e.features[0].properties.mag;
-var tsunami;
+var status;
  
-if (e.features[0].properties.tsunami === 1) {
-tsunami = 'yes'
+//Conditionals of parameters of the map regarding confirmed cases or suspiciuous cases
+
+if (e.features[0].properties.status === 1) {
+status = 'Confirmado'
 } else {
-tsunami = 'no'
+status = 'Sospechoso'
 }
+
+
+
+
  
 // Ensure that if the map is zoomed out such that
 // multiple copies of the feature are visible, the
@@ -243,7 +276,7 @@ coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
  
 new mapboxgl.Popup()
 .setLngLat(coordinates)
-.setHTML("Edad: " + mag + "<br>Confirmado?: " + tsunami)
+.setHTML("Municipio: " + mag + "<br>Status del caso: " + status)
 .addTo(map);
 });
  
@@ -254,7 +287,9 @@ map.on('mouseleave', 'clusters', function() {
 map.getCanvas().style.cursor = '';
 });
 });
-*/
+
+
+/*
 var size = 600;
  
 // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
@@ -344,14 +379,15 @@ map.addSource('points', {
 }
 });
 map.addLayer({
-'id': 'points',
-'type': 'symbol',
+'id': 'points',type': 'symbol',
 'source': 'points',
 'layout': {
 'icon-image': 'pulsing-dot'
 }
+'
 });
 });
+*/
 </script>
 
 <br>
