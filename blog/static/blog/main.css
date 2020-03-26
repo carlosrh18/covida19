@@ -1,6 +1,6 @@
 body {
-  background: #333333;
-  color:  white;
+  background: white;
+  color:  #333333;
   margin-top: 0;
 }
 
@@ -37,7 +37,7 @@ ul {
 
 }
 .content-section {
-  background: black;
+  background: white;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
