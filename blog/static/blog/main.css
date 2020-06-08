@@ -1,6 +1,6 @@
 body {
   background: white;
-  color:  #333333;
+  color:  black;
   margin-top: 0;
 }
 
@@ -49,7 +49,7 @@ ul {
 }
 
 a.article-title:hover {
-  color: #DAF000;
+  color: #7FDBFF;
   text-decoration: none;
 }
 

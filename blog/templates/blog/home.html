@@ -102,18 +102,13 @@
 			}
 
 		</script>
+		<h1 class="titulo">FARANIA</h1>
+		<h2 class="info2">Tu lugar y roomie ideal te esperan</h2>
 {% endif %}
 
 
 
-<br>
-<h2 id="casos"  style="text-align:center;">Casos confirmados en Colima: 2</h2>
-<h2 id="casos" style="text-align:center;">Casos Sospechosos en Colima: 7</h2>
-<br>
-<h6 id="leyenda">Amarillo: Casos sospechosos, Rojo: Casos confirmados</h6>
-<br>
-<h4 id="leyenda">Actualizado al 25/03/20 a las 11:17 p.m</h4>
-<h6 id="leyenda">Información de Secretaría de Salud Colima</h6>
+<!--
 <div id='map' style='width: 1120px; height: 600px;'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3JvYmxlczE4OTYiLCJhIjoiY2s3eWF0b3I4MDRyMTNvcXIxOGc5ZWl3cyJ9.CRvm3fO7Cb3ZOXdUU_zOqg';
@@ -389,9 +384,10 @@ map.addLayer({
 });
 */
 </script>
-
+-->
+{% if  user.is_authenticated %}
 <br>
-<h1>¿Qué opinan los ciudadanos?</h1>
+<h1>Encuentra a tu roomie ideal</h1>
     {% for post in posts %}
       <div class="jumbotron mt-3 bg-white shadow-lg">
       <article class="media content-section shadow">
@@ -443,4 +439,6 @@ map.addLayer({
         <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Ultimo</a>
       {% endif %}
     {% endif %}
+	{% endif %}
 {% endblock content %}
+
