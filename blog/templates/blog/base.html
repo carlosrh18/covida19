@@ -8,7 +8,7 @@
     <meta property="og:description" content="Infórmate acerca del coronavirus en Colima y comparte información en tiempo real">
     <meta property="og:image" content="https://cdn.shrm.org/image/upload/c_crop,h_617,w_1099,x_0,y_0/c_fit,f_auto,q_auto,w_767/v1/Legal%20and%20Compliance/coronavirus4m_utz5jt?databtoa=eyIxNng5Ijp7IngiOjAsInkiOjAsIngyIjoxMDk5LCJ5MiI6NjE3LCJ3IjoxMDk5LCJoIjo2MTd9fQ%3D%3D">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 
     <!-- Bootstrap CSS -->
@@ -28,6 +28,7 @@
 
     <style>
     .titulo {
+      font-size:5vw;
     position: absolute;
 	top: 280px;
 	width: 100%;
@@ -35,11 +36,10 @@
 	text-align: center;
 	z-index: 100;
 	display:block;
-	font-size: 100px;
   color: white;
 }
     body {
-  background: #5CDB95;
+  background: white;
   margin-top: 0;
 }
 h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 27px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
@@ -53,9 +53,9 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 	z-index: 100;
 	display:block;
-	font-size: 32px;
   color: white;
    padding-right: 280px;
+   font-size:3vw;
 		}
     #esperalo {
 			position: absolute;
@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
   console.log('Desarrollado por Ing.Carlos Andrés Robles')
   </script>
   
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-blue">
                 <a class="navbar-brand font-weight-bold" href="{% url 'blog-home' %}">Farania</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -111,15 +111,15 @@ h1, h2, h3, h4, h5, h6 {
                 {% endif %}
               
                     {% if user.is_authenticated %}
-                    <a href="{% url 'user-posts' user %}" class="btn text-white m-2"><i class="fas fa-user-shield"></i> Mis posts</a>
-                    <a href="{% url 'post-create' %} " class="btn text-white m-2"><i class="fas fa-user-edit"></i> Post nuevo</a>
-                    <a href="{% url 'profile' %} " class="btn text-white m-2"><i class="fas fa-user"></i> {{ user.username }}</a>
-                    <a href="{% url 'logout' %} " class="btn text-white m-2"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    <a href="{% url 'user-posts' user %}" class="btn text-black m-2"><i class="fas fa-user-shield"></i> Mis posts</a>
+                    <a href="{% url 'post-create' %} " class="btn text-black m-2"><i class="fas fa-user-edit"></i> Post nuevo</a>
+                    <a href="{% url 'profile' %} " class="btn text-black m-2"><i class="fas fa-user"></i> {{ user.username }}</a>
+                    <a href="{% url 'logout' %} " class="btn text-black m-2"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     
                     {% else %}
-                    <a href="{% url 'login' %} " class="btn text-white m-2"><i class="fas fa-user-tie"></i> Inicia Sesión </a>
+                    <a href="{% url 'login' %} " class="btn text-black m-2"><i class="fas fa-user-tie"></i> Inicia Sesión </a>
                    
-                    <a href="{% url 'register' %} " class="btn text-white m-2"> <i class="fas fa-sign-in-alt"></i> Regístrate</a>
+                    <a href="{% url 'register' %} " class="btn text-black m-2"> <i class="fas fa-sign-in-alt"></i> Regístrate</a>
                     {% endif %}
                   
                 </div>
