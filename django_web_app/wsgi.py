@@ -17,3 +17,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_web_app.settings')
 
 application = Cling(get_wsgi_application())
 
+
+
