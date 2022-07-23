@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import dj_database_url 
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +26,7 @@ SECRET_KEY = '@5&-q%^o=@mb@=@e%b9yz^b#l-2)w&_s0ick#=wy3kw36$z($g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['forania.herokuapp.com','127.0.0.1','localhost','covida.herokuapp.com','192.168.1.28']
+ALLOWED_HOSTS = ['forania.herokuapp.com','127.0.0.1','localhost','covida.herokuapp.com','192.168.1.28','0.0.0.0']
 
 
 # Application definition
