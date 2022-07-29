@@ -19,7 +19,7 @@ jsonschema==3.0.2
 MarkupSafe==1.1.1
 matplotlib==3.1.1
 mccabe==0.6.1
-mistune==0.8.4
+mistune==2.0.3
 Pillow==6.2.0
 pipenv==2018.11.26
 protobuf==3.11.3
