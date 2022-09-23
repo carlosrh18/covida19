@@ -22,7 +22,7 @@ mccabe==0.6.1
 mistune==0.8.4
 Pillow==6.2.0
 pipenv==2018.11.26
-protobuf==3.11.3
+protobuf==3.18.3
 psycopg2-binary==2.8.4
 requests==2.22.0
 virtualenv==16.7.9
